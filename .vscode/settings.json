@@ -2,5 +2,6 @@
     "workbench.colorTheme": "Default Dark+",
     "liveServer.settings.donotShowInfoMsg": true,
     "liveServer.settings.root": "/",
-    "editor.detectIndentation": false
+    "editor.detectIndentation": false,
+    "editor.formatOnSave": true
 }

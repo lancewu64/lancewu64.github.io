@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,23 +7,73 @@
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Portfolio | Lance Wu</title>
 </head>
+
 <body style="background-color: #efefef;">
     <div class="container">
         <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
-          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-            <span class="fs-4"><img src="assets/images/logo.png" alt="Lance Wu"></span>
-          </a>
-    
-          <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Portfolio</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Experience</a></li>
-          </ul>
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg>
+                <span class="fs-4"><img src="assets/images/logo.png" alt="Lance Wu"></span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Portfolio</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Experience</a></li>
+            </ul>
         </header>
     </div>
 
-    <div><center><h3>Coming soon...</h3></center></div>
+    <div class="container alert alert-primary col-8" role="alert">
+        Hi! I am Lance, a software developer. Welcome to my portfolio website!
+    </div>
+
+    <div class="container col-8">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Skill</a>
+            </li>
+        </ul>
+        <table class="table table-bordered">
+            <tr>
+                <td class="table-light col-2">C/C++</td>
+                <td class="table-light col-6">
+                    <ul>
+                        <li>Usually used in embedded system projects like Cable Modem, Wi-Fi Router and IoT devices.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td class="table-light col-2">Linux ShellScript</td>
+                <td class="table-light col-6">
+                    <ul>
+                        <li>Used in embedded system to control boot-up process and service process.</li>
+                        <li>Create some scripts to let develop quickly and easily.</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="container col-8">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Knowledge</a>
+            </li>
+        </ul>
+        <table class="table table-bordered">
+            <tr>
+                <td class="table-light col-2">Networking</td>
+                <td class="table-light col-6">
+                    <ul>
+                        <li>Networking procotol like TCP/UDP, DHCP, HTTP, etc...</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
 </body>
-<script src="js/bootstrap.js"
-</html>
+<script src="js/bootstrap.js" </html>
