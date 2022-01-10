@@ -1,0 +1,18 @@
+[
+    {
+        "name": "vue.js",
+        "descr": [
+            "Line1",
+            "Line2",
+            "Line3"
+        ]
+    },
+    {
+        "name": "javascript",
+        "descr": [
+            "Line4",
+            "Line5",
+            "Line6"
+        ]
+    },
+]
