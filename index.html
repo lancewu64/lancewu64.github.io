@@ -26,35 +26,17 @@
         </header>
     </div>
 
-    <div class="container alert alert-primary col-8" role="alert">
-        Hi! I am Lance, a software developer. Welcome to my portfolio website!
+    <div class="container alert alert-primary col-8" role="alert" id="about_me">
+        {{about_me.message}}
     </div>
 
     <div class="container col-8" id="skill_data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Skill</a>
+                <a class="nav-link active" aria-current="page" href="#">Skills</a>
             </li>
         </ul>
         <table class="table table-bordered">
-            <tr>
-                <td class="table-light col-2">C/C++</td>
-                <td class="table-light col-6">
-                    <ul>
-                        <li>Usually used in embedded system projects like Cable Modem, Wi-Fi Router and IoT devices.
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td class="table-light col-2">Linux ShellScript</td>
-                <td class="table-light col-6">
-                    <ul>
-                        <li>Used in embedded system to control boot-up process and service process.</li>
-                        <li>Create some scripts to let develop quickly and easily.</li>
-                    </ul>
-                </td>
-            </tr>
             <tr v-for="skill in skills">
                 <td class="table-light col-2">{{skill.name}}</td>
                 <td class="table-light col-6">
@@ -87,25 +69,45 @@
 
 </body>
 <script src="js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
 <script>
 
     // Vue 3.0 with options-base style
-    const vm = Vue.createApp({
+    const about_me = Vue.createApp({
         data() {
 
-            skill_data = [
-                { name: 'vue.js', descr: ['Line1', 'Line2', 'Line3'] },
-                { name: 'javascript', descr: ['Line4', 'Line5', 'Line6'] },
-            ]
-
             return {
-                skills: skill_data,
+                about_me: {},
             }
         }
-    });
+    }).mount('#about_me');
 
-    vm.mount('#skill_data');
+    const skill_data = Vue.createApp({
+        data() {
+
+            return {
+                skills: [],
+            }
+        }
+    }).mount('#skill_data');
+
+    // vm.mount('#skill_data');
+
+    $.ajax({
+        type: 'get',
+        dataType: "json",
+        url: 'assets/data/about_me.json',
+        success: function (res) {
+            // vm1.notifydata=res;
+            console.log(res);
+            about_me.$data.about_me = res.about_me;
+            skill_data.$data.skills = res.skill_data;
+        },
+        error: function (res) {
+            console.log('ERROR');
+        }
+    });
 
 </script>
 

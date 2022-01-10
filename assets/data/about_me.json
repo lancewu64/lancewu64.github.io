@@ -1,0 +1,20 @@
+{
+    "about_me": {
+        "message": "Hi! I am Lance, a software developer. Welcome to my portfolio website!"
+    },
+    "skill_data": [
+        {
+            "name": "C/C++",
+            "descr": [
+                "Usually used in embedded system projects like Cable Modem, Wi-Fi Router and IoT devices."
+            ]
+        },
+        {
+            "name": "Linux ShellScript",
+            "descr": [
+                "Used in embedded system to control boot-up process and service process.",
+                "Create some scripts to let develop quickly and easily."
+            ]
+        }
+    ]
+}
