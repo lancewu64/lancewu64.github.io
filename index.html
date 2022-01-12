@@ -27,7 +27,20 @@
     </div>
 
     <div class="container alert alert-primary col-8" role="alert" id="about_me">
-        {{about_me.message}}
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-2">
+                    <img src="assets/images/avatar.jpg" class="img-fluid rounded-start" alt="avatar">
+                </div>
+                <div class="col-md-10">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ about_me.message }}</h5>
+                        <p class="card-text">Some description here.</p>
+                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="container col-8" id="skill_data">
