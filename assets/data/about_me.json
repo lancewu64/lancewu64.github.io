@@ -1,6 +1,8 @@
 {
     "about_me": {
-        "message": "Hi! I am Lance, a software developer. Welcome to my portfolio website!"
+        "avatar_src": "assets/images/avatar.jpg",
+        "message": "Hi! I am Lance, a software developer. Welcome to my portfolio website!",
+        "description": "Put some description here."
     },
     "skill_data": [
         {
