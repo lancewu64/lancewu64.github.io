@@ -54,6 +54,12 @@
         </div>
     </div>
 
+    <div class="container col-8 mb-4" id="aboutme_menu">
+        <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').fadeIn('slow');">ALL</button>
+        <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').hide();">Skills</button>
+        <button onclick="$('#skill_data').hide(); $('#knowledge_data').fadeIn('slow');">Knowledge</button>
+    </div>
+
     <div class="container col-8" id="skill_data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
@@ -73,7 +79,7 @@
         </table>
     </div>
 
-    <div class="container col-8">
+    <div class="container col-8" id="knowledge_data">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Knowledge</a>
@@ -120,26 +126,39 @@
     }).mount('#skill_data');
 
     // vm.mount('#skill_data');
+    $(document).ready(function () {
 
-    $.ajax({
-        type: 'get',
-        dataType: "json",
-        url: 'assets/data/about_me.json',
-        success: function (res) {
-            // vm1.notifydata=res;
-            console.log(res);
-            //
-            about_me.$data.about_me = res.about_me;
-            about_me.$data.hasEmail = (res.about_me.email != "");
-            about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
-            about_me.$data.hasLine = (res.about_me.line != "");
-            //
-            skill_data.$data.skills = res.skill_data;
-        },
-        error: function (res) {
-            console.log('ERROR');
-        }
+        // $('#about_me').hide();
+
+        // $('#skill_data').fadeIn('slow');
+        $('#skill_data').hide();
+        $('#knowledge_data').hide();
+
+        $.ajax({
+            type: 'get',
+            dataType: "json",
+            url: 'assets/data/about_me.json',
+            success: function (res) {
+                // vm1.notifydata=res;
+                console.log(res);
+                //
+                about_me.$data.about_me = res.about_me;
+                about_me.$data.hasEmail = (res.about_me.email != "");
+                about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
+                about_me.$data.hasLine = (res.about_me.line != "");
+                //
+                skill_data.$data.skills = res.skill_data;
+
+                // $('#about_me').fadeIn('slow');
+                $('#skill_data').fadeIn('slow');
+                $('#knowledge_data').fadeIn('slow');
+            },
+            error: function (res) {
+                console.log('ERROR');
+            }
+        });
     });
+
 
 </script>
 
