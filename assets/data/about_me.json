@@ -2,7 +2,10 @@
     "about_me": {
         "avatar_src": "assets/images/avatar.jpg",
         "message": "Hi! I am Lance, a software developer. Welcome to my portfolio website!",
-        "description": "Put some description here."
+        "description": "Put some description here.",
+        "email": "mailto:lance.wu@gmail.com",
+        "linkedin": "https://www.linkedin.com/in/chih-wei-wu-35088321/",
+        "line": ""
     },
     "skill_data": [
         {

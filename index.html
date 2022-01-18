@@ -36,10 +36,16 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ about_me.message }}</h5>
                         <p class="card-text">{{ about_me.description}}</p>
-                        <div style="position : absolute; bottom   : 0;">
-                            <a href="#" style="padding: 5px; opacity: 0.4; filter: alpha(opacity=40); "><img src="assets/images/gmail.png" alt="GMail"></a>
-                            <a href="#" style="padding: 5px; opacity: 0.4; filter: alpha(opacity=40); "><img src="assets/images/linkedin.png" alt="Linkedin"></a>
-                            <a href="#" style="padding: 5px; opacity: 0.4; filter: alpha(opacity=40); "><img src="assets/images/line.png" alt="Line"></a>
+                        <div style="position: absolute; bottom: 0; display: flex;">
+                            <div v-if="hasEmail" class="m-1">
+                                <a :href="about_me.email" target="_blank"><img src="assets/images/gmail.png" alt="GMail"></a>
+                            </div>
+                            <div v-if="hasLinkedIn" class="m-1">
+                                <a :href="about_me.linkedin" target="_blank"><img src="assets/images/linkedin.png" alt="Linkedin"></a>
+                            </div>
+                            <div v-if="hasLine" class="m-1">
+                                <a :href="about_me.line" target="_blank"><img src="assets/images/line.png" alt="Line"></a>
+                            </div>
                         </div>
                         <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                     </div>
@@ -97,8 +103,11 @@
 
             return {
                 about_me: {},
+                hasEmail: false,
+                hasLinkedIn: false,
+                hasLine: false
             }
-        }
+        },
     }).mount('#about_me');
 
     const skill_data = Vue.createApp({
@@ -119,7 +128,12 @@
         success: function (res) {
             // vm1.notifydata=res;
             console.log(res);
+            //
             about_me.$data.about_me = res.about_me;
+            about_me.$data.hasEmail = (res.about_me.email != "");
+            about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
+            about_me.$data.hasLine = (res.about_me.line != "");
+            //
             skill_data.$data.skills = res.skill_data;
         },
         error: function (res) {
