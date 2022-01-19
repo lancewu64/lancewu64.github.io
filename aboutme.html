@@ -1,0 +1,172 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <title>Portfolio | Lance Wu</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", Arial;
+        }
+    </style>
+</head>
+
+<body class="bg-secondary bg-gradient">
+    <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+                <!-- <svg class="bi me-2" width="40" height="32">
+                    <use xlink:href="#bootstrap" />
+                </svg> -->
+                <!-- <span class="fs-4"><img src="assets/images/logo.png" alt="Lance Wu"></span> -->
+                <span class="fs-4"><button style="background-color:transparent; border: none;"><span class="text-dark">LW</span></button></span>
+            </a>
+
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="/index.html" class="nav-link text-dark">Home</a></li>
+                <li class="nav-item"><a href="/portfolio.html" class="nav-link text-dark">Portfolio</a></li>
+                <li class="nav-item"><a href="/experience.html" class="nav-link text-dark">Experience</a></li>
+                <li class="nav-item"><a href="/aboutme.html" class="nav-link active" aria-current="page">About Me</a></li>
+            </ul>
+        </header>
+    </div>
+
+    <div class="container alert alert-primary col-8" role="alert" id="about_me">
+        <div class="card mb-3 alert-primary" style="border: 0">
+            <div class="row g-0">
+                <div class="col-md-2">
+                    <img :src="about_me.avatar_src" class="img-fluid rounded" alt="avatar">
+                </div>
+                <div class="col-md-10 alert-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ about_me.message }}</h5>
+                        <p class="card-text">{{ about_me.description}}</p>
+                        <div style="position: absolute; bottom: 0; display: flex;">
+                            <div v-if="hasEmail" class="m-1">
+                                <a :href="about_me.email" target="_blank"><img src="assets/images/gmail.png" alt="GMail"></a>
+                            </div>
+                            <div v-if="hasLinkedIn" class="m-1">
+                                <a :href="about_me.linkedin" target="_blank"><img src="assets/images/linkedin.png" alt="Linkedin"></a>
+                            </div>
+                            <div v-if="hasLine" class="m-1">
+                                <a :href="about_me.line" target="_blank"><img src="assets/images/line.png" alt="Line"></a>
+                            </div>
+                        </div>
+                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-8 mb-4" id="aboutme_menu">
+        <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').fadeIn('slow');">ALL</button>
+        <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').hide();">Skills</button>
+        <button onclick="$('#skill_data').hide(); $('#knowledge_data').fadeIn('slow');">Knowledge</button>
+    </div>
+
+    <div class="container col-8" id="skill_data">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Skills</a>
+            </li>
+        </ul>
+        <table class="table table-bordered">
+            <tr v-for="skill in skills">
+                <td class="table-light col-2">{{skill.name}}</td>
+                <td class="table-light col-6">
+                    <ul>
+                        <li v-for="descr in skill.descr">{{descr}}</li>
+                    </ul>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+
+    <div class="container col-8" id="knowledge_data">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Knowledge</a>
+            </li>
+        </ul>
+        <table class="table table-bordered">
+            <tr>
+                <td class="table-light col-2">Networking</td>
+                <td class="table-light col-6">
+                    <ul>
+                        <li>Networking procotol like TCP/UDP, DHCP, HTTP, etc...</li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+<script src="js/bootstrap.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script>
+
+    // Vue 3.0 with options-base style
+    const about_me = Vue.createApp({
+        data() {
+
+            return {
+                about_me: {},
+                hasEmail: false,
+                hasLinkedIn: false,
+                hasLine: false
+            }
+        },
+    }).mount('#about_me');
+
+    const skill_data = Vue.createApp({
+        data() {
+
+            return {
+                skills: [],
+            }
+        }
+    }).mount('#skill_data');
+
+    // vm.mount('#skill_data');
+    $(document).ready(function () {
+
+        // $('#about_me').hide();
+
+        // $('#skill_data').fadeIn('slow');
+        $('#skill_data').hide();
+        $('#knowledge_data').hide();
+
+        $.ajax({
+            type: 'get',
+            dataType: "json",
+            url: 'assets/data/about_me.json',
+            success: function (res) {
+                // vm1.notifydata=res;
+                console.log(res);
+                //
+                about_me.$data.about_me = res.about_me;
+                about_me.$data.hasEmail = (res.about_me.email != "");
+                about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
+                about_me.$data.hasLine = (res.about_me.line != "");
+                //
+                skill_data.$data.skills = res.skill_data;
+
+                // $('#about_me').fadeIn('slow');
+                $('#skill_data').fadeIn('slow');
+                $('#knowledge_data').fadeIn('slow');
+            },
+            error: function (res) {
+                console.log('ERROR');
+            }
+        });
+    });
+
+
+</script>
+
+</html>

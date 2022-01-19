@@ -1,0 +1,10 @@
+{
+    "welcome_msg": "",
+    "carousel_data": [
+        {
+            "name": "YLE Starters",
+            "src": "assets/images/yle-1.png",
+            "description": "YLE Starters is a APP."
+        }
+    ]
+}
