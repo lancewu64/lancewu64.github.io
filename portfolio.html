@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
     <title>Portfolio | Lance Wu</title>
+    <style>
+        body {
+            font-family: "Comic Sans MS", Arial;
+        }
+    </style>
 </head>
 
 <body style="background-color: #efefef;">
@@ -21,11 +26,30 @@
 
             <ul class="nav nav-pills">
                 <li class="nav-item"><a href="/index.html" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="/portfolio.html" class="nav-link active" aria-current="page">Portfolio</a>
-                </li>
+                <li class="nav-item"><a href="/portfolio.html" class="nav-link active" aria-current="page">Portfolio</a></li>
                 <li class="nav-item"><a href="/experience.html" class="nav-link">Experience</a></li>
             </ul>
         </header>
+    </div>
+
+    <div class="container alert alert-primary col-8" role="alert" id="information">
+        <div class="card mb-3 alert-primary" style="border: 0">
+            <div class="row g-0">
+                <div class="alert-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">My Portfolio</h5>
+                        <p class="card-text">Description here.</p>
+                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container col-8 mb-4" id="portfolio_menu">
+        <button>ALL</button>
+        <button>APP</button>
+        <button>WEB</button>
     </div>
 
 </body>
