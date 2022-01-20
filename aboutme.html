@@ -13,27 +13,14 @@
     </style>
 </head>
 
-<body class="bg-secondary bg-gradient">
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <!-- <svg class="bi me-2" width="40" height="32">
-                    <use xlink:href="#bootstrap" />
-                </svg> -->
-                <!-- <span class="fs-4"><img src="assets/images/logo.png" alt="Lance Wu"></span> -->
-                <span class="fs-4"><button style="background-color:transparent; border: none;"><span class="text-dark">LW</span></button></span>
-            </a>
-
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/index.html" class="nav-link text-dark">Home</a></li>
-                <li class="nav-item"><a href="/portfolio.html" class="nav-link text-dark">Portfolio</a></li>
-                <li class="nav-item"><a href="/experience.html" class="nav-link text-dark">Experience</a></li>
-                <li class="nav-item"><a href="/aboutme.html" class="nav-link active" aria-current="page">About Me</a></li>
-            </ul>
-        </header>
+<body class="bg-dark bg-gradient">
+    <div class="container" id="header_bar">
     </div>
 
-    <div class="container alert alert-primary col-8" role="alert" id="about_me">
+    <div class="container col-8" id="information">
+    </div>
+
+    <!-- <div class="container alert alert-primary col-8" role="alert" id="about_me">
         <div class="card mb-3 alert-primary" style="border: 0">
             <div class="row g-0">
                 <div class="col-md-2">
@@ -54,12 +41,11 @@
                                 <a :href="about_me.line" target="_blank"><img src="assets/images/line.png" alt="Line"></a>
                             </div>
                         </div>
-                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="container col-8 mb-4" id="aboutme_menu">
         <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').fadeIn('slow');">ALL</button>
@@ -108,55 +94,46 @@
 <script src="js/bootstrap.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
+<script src="js/my_common.js"></script>
+
 <script>
 
-    // Vue 3.0 with options-base style
-    const about_me = Vue.createApp({
-        data() {
+    var filename = location.pathname.substr(location.pathname.lastIndexOf("/") + 1).split(".")[0];
+    console.log("filename is " + filename);
 
-            return {
-                about_me: {},
-                hasEmail: false,
-                hasLinkedIn: false,
-                hasLine: false
-            }
-        },
-    }).mount('#about_me');
-
-    const skill_data = Vue.createApp({
-        data() {
-
-            return {
-                skills: [],
-            }
-        }
-    }).mount('#skill_data');
-
-    // vm.mount('#skill_data');
     $(document).ready(function () {
 
-        // $('#about_me').hide();
-
-        // $('#skill_data').fadeIn('slow');
+        $('#header_bar').hide();
+        $('#information').hide();
+        $('#aboutme_menu').hide();
         $('#skill_data').hide();
         $('#knowledge_data').hide();
+
+        const skill_data = Vue.createApp({
+            data() {
+
+                return {
+                    skills: [],
+                }
+            }
+        }).mount('#skill_data');
 
         $.ajax({
             type: 'get',
             dataType: "json",
             url: 'assets/data/about_me.json',
             success: function (res) {
-                // vm1.notifydata=res;
-                console.log(res);
-                //
-                about_me.$data.about_me = res.about_me;
-                about_me.$data.hasEmail = (res.about_me.email != "");
-                about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
-                about_me.$data.hasLine = (res.about_me.line != "");
-                //
+                var current_header = show_header.mount("#header_bar");
+                current_header.$data.current_page = filename;
+
+                var current_info = info_area.mount("#information");
+                current_info.$data.info_area = res.info_area;
+
                 skill_data.$data.skills = res.skill_data;
 
-                // $('#about_me').fadeIn('slow');
+                $('#header_bar').fadeIn('slow');
+                $('#information').fadeIn('slow');
+                $('#aboutme_menu').fadeIn('slow');
                 $('#skill_data').fadeIn('slow');
                 $('#knowledge_data').fadeIn('slow');
             },
@@ -165,6 +142,62 @@
             }
         });
     });
+
+    // // Vue 3.0 with options-base style
+    // const about_me = Vue.createApp({
+    //     data() {
+
+    //         return {
+    //             about_me: {},
+    //             hasEmail: false,
+    //             hasLinkedIn: false,
+    //             hasLine: false
+    //         }
+    //     },
+    // }).mount('#about_me');
+
+    // const skill_data = Vue.createApp({
+    //     data() {
+
+    //         return {
+    //             skills: [],
+    //         }
+    //     }
+    // }).mount('#skill_data');
+
+    // // vm.mount('#skill_data');
+    // $(document).ready(function () {
+
+    //     // $('#about_me').hide();
+
+    //     // $('#skill_data').fadeIn('slow');
+    //     $('#skill_data').hide();
+    //     $('#knowledge_data').hide();
+
+    //     $.ajax({
+    //         type: 'get',
+    //         dataType: "json",
+    //         url: 'assets/data/about_me.json',
+    //         success: function (res) {
+    //             // vm1.notifydata=res;
+    //             console.log(res);
+    //             //
+    //             about_me.$data.about_me = res.about_me;
+    //             about_me.$data.hasEmail = (res.about_me.email != "");
+    //             about_me.$data.hasLinkedIn = (res.about_me.linkedin != "");
+    //             about_me.$data.hasLine = (res.about_me.line != "");
+    //             //
+    //             skill_data.$data.skills = res.skill_data;
+
+    //             // $('#about_me').fadeIn('slow');
+    //             $('#skill_data').fadeIn('slow');
+    //             $('#knowledge_data').fadeIn('slow');
+    //         },
+    //         error: function (res) {
+    //             console.log('ERROR');
+    //         }
+    //     });
+    // });
 
 
 </script>

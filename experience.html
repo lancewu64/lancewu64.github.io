@@ -15,41 +15,14 @@
     </style>
 </head>
 
-<body class="bg-secondary bg-gradient">
-    <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
-            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-                <!-- <svg class="bi me-2" width="40" height="32">
-                    <use xlink:href="#bootstrap" />
-                </svg> -->
-                <!-- <span class="fs-4"><img src="assets/images/logo.png" alt="Lance Wu"></span> -->
-                <span class="fs-4"><button style="background-color:transparent; border: none;"><span class="text-dark">LW</span></button></span>
-            </a>
-
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="/index.html" class="nav-link text-dark">Home</a></li>
-                <li class="nav-item"><a href="/portfolio.html" class="nav-link text-dark">Portfolio</a></li>
-                <li class="nav-item"><a href="/experience.html" class="nav-link active" aria-current="page">Experience</a></li>
-                <li class="nav-item"><a href="/aboutme.html" class="nav-link text-dark">About Me</a></li>
-            </ul>
-        </header>
+<body class="bg-dark bg-gradient">
+    <div class="container" id="header_bar">
     </div>
 
-    <div class="container alert alert-primary col-8" role="alert" id="information">
-        <div class="card mb-3 alert-primary" style="border: 0">
-            <div class="row g-0">
-                <div class="alert-primary">
-                    <div class="card-body">
-                        <h5 class="card-title">My Experience</h5>
-                        <p class="card-text">Description here.</p>
-                        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="container col-8" id="information">
     </div>
 
-    <div class="container  col-8">
+    <div class="container  col-8" id="work_timeline">
         <div class="VivaTimeline">
             <dl>
                 <dt>Jan 2016</dt>
@@ -176,7 +149,43 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="js/jquery.eeyellow.Timeline.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
+<script src="js/my_common.js"></script>
+
 <script>
+    var filename = location.pathname.substr(location.pathname.lastIndexOf("/") + 1).split(".")[0];
+    console.log("filename is " + filename);
+
+    $(document).ready(function () {
+
+        $('#header_bar').hide();
+        $('#information').hide();
+        $('#work_timeline').hide();
+
+        $.ajax({
+            type: 'get',
+            dataType: "json",
+            url: 'assets/data/experience.json',
+            success: function (res) {
+                var current_header = show_header.mount("#header_bar");
+                current_header.$data.current_page = filename;
+
+                var current_info = info_area.mount("#information");
+                current_info.$data.info_area = res.info_area;
+
+                // var work_carousel = show_carousel.mount("#work_carousel");
+                // work_carousel.$data.carousel_data = res.carousel_data;
+
+                $('#header_bar').fadeIn('slow');
+                $('#information').fadeIn('slow');
+                $('#work_timeline').fadeIn('slow');
+            },
+            error: function (res) {
+                console.log('ERROR');
+            }
+        });
+    });
+
+
     $('.VivaTimeline').vivaTimeline();
 </script>
 

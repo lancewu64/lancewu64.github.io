@@ -1,4 +1,8 @@
 {
+    "info_area": {
+        "msg": "About Me",
+        "description": ""
+    },
     "about_me": {
         "avatar_src": "assets/images/avatar.jpg",
         "message": "Hi! I am Lance, a software developer. Welcome to my portfolio website!",
