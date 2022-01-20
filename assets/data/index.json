@@ -6,22 +6,22 @@
     "carousel_data": [
         {
             "name": "YLE Starters",
-            "src": "assets/images/app/YLE_Starters/yle-1.png",
+            "src": "assets/images/app/YLE_Starters/yle_carousel.png",
             "description": "YLE Starters is a APP."
         },
         {
             "name": "Quick 9x9",
-            "src": "assets/images/app/Quick99/quick99-1.png",
+            "src": "assets/images/app/Quick99/quick99_carousel.png",
             "description": "Quick 9x9 is a APP."
         },
         {
             "name": "Ocarina Conductor",
-            "src": "assets/images/app/Ocarina_Conductor/oc-1.png",
+            "src": "assets/images/app/Ocarina_Conductor/oc_carousel.png",
             "description": "Ocarina Conductor is a APP."
         },
         {
             "name": "BLE GATT Browser",
-            "src": "assets/images/app/BLE_GATT_Browser/ble-1.png",
+            "src": "assets/images/app/BLE_GATT_Browser/ble_carousel.png",
             "description": "BLE GATT Browser is a APP."
         }
     ]

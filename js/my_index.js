@@ -7,10 +7,10 @@ const show_carousel = Vue.createApp({
             <div class="carousel-inner">
                 <div v-for=" (item,key) in carousel_data" :class="key==0? 'carousel-item active':'carousel-item'" >
                     <img :src="item.src" class="d-block" style="margin: auto;" :alt="item.name">
-                    <div class="carousel-caption d-none d-md-block">
+                    <!--<div class="carousel-caption d-none d-md-block">
                         <h5>{{item.name}}</h5>
                         <p>{{item.description}}</p>
-                    </div>
+                    </div>-->
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
