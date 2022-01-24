@@ -6,7 +6,11 @@ const show_header = Vue.createApp({
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <span class="fs-4"><button style="background-color:transparent; border: none;"><span class="text-light">LW</span></button></span>
                 </a>
-
+                <div style="margin: auto;" class="text-white fs-4 mb-3 align-middle">
+                    <a href="mailto:lance.wu@gmail.com" target="_blank" style="text-decoration: none">
+                        <i class="bi bi-envelope"></i> <span class="h6">lance.wu@gmail.com</span>
+                    </a>
+                </div>
                 <ul class="nav nav-pills">
                     <li class="nav-item"><a href="/index.html" :class="current_page == 'index'? 'nav-link active':'nav-link'" :aria-current="current_page == 'index'? 'page':''">Home</a></li>
                     <li class="nav-item"><a href="/portfolio.html" :class="current_page == 'portfolio'? 'nav-link active':'nav-link'" :aria-current="current_page == 'portfolio'? 'page':''">Portfolio</a></li>
