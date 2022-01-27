@@ -34,7 +34,7 @@ const info_area = Vue.createApp({
             <div class="card mb-3" style="background-color:transparent; border: 0">
                 <div class="row g-0">
                     <div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h5 class="card-title text-light">{{info_area.msg}}</h5>
                             <p class="card-text text-light" style="white-space: pre-line;">{{info_area.description}}</p>
                             <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
