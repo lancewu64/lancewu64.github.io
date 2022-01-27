@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <title>Portfolio | Lance Wu</title>
     <style>
         body {
@@ -21,30 +22,64 @@
     <div class="container col-8" id="information">
     </div>
 
-    <div class="container col-8 mb-4" id="portfolio_menu">
+    <div class="container col-8 mb-2" id="portfolio_menu">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#APP_items">APP</a>
+                <a class="nav-link active" aria-current="page" href="#" onclick="change_portfolio(0);">APP</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#WEB_items">WEB</a>
+                <a class="nav-link" href="#" onclick="change_portfolio(1);">WEB</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#Others_items">Others</a>
+                <a class="nav-link" href="#" onclick="change_portfolio(2);">Others</a>
             </li>
         </ul>
     </div>
 
-    <div class="container col-8 mb-4 bg-primary" id="APP_items" style="height: 800px;">
+    <div class="container col-8 mb-2" id="APP_items">
+        <div id="APP_items_list" class="mb-2">
+            <input type="radio" class="btn-check" name="APP-options" id="APP-1" autocomplete="off" checked>
+            <label class="btn btn-outline-info" for="APP-1">YLE Starters / Movers</label>
 
+            <input type="radio" class="btn-check" name="APP-options" id="APP-2" autocomplete="off">
+            <label class="btn btn-outline-info" for="APP-2">Quick 9x9</label>
+
+            <input type="radio" class="btn-check" name="APP-options" id="APP-3" autocomplete="off">
+            <label class="btn btn-outline-info" for="APP-3">Ocarina Conductor</label>
+
+            <input type="radio" class="btn-check" name="APP-options" id="APP-4" autocomplete="off">
+            <label class="btn btn-outline-info" for="APP-4">BLE GATT Browser</label>
+        </div>
+        <div class=" bg-primary" id="APP_item_data" style="height: 600px;">
+
+        </div>
     </div>
 
-    <div class="container col-8 mb-4 bg-secondary" id="WEB_items" style="height: 800px;">
+    <div class="container col-8 mb-2" id="WEB_items">
+        <div id="WEB_items_list" class="mb-2">
+            <input type="radio" class="btn-check" name="WEB-options" id="WEB-1" autocomplete="off" checked>
+            <label class="btn btn-outline-info" for="WEB-1">Web 1</label>
 
+            <input type="radio" class="btn-check" name="WEB-options" id="WEB-2" autocomplete="off">
+            <label class="btn btn-outline-info" for="WEB-2">Web 2</label>
+
+            <input type="radio" class="btn-check" name="WEB-options" id="WEB-3" autocomplete="off">
+            <label class="btn btn-outline-info" for="WEB-3">Web 3</label>
+
+        </div>
+        <div class=" bg-primary" id="APP_item_data" style="height: 600px;">
+
+        </div>
     </div>
 
-    <div class="container col-8 mb-4 bg-success" id="Others_items" style="height: 800px;">
+    <div class="container col-8 mb-2" id="Others_items">
+        <div id="Others_items_list" class="mb-2">
+            <input type="radio" class="btn-check" name="Others-options" id="Others-1" autocomplete="off" checked>
+            <label class="btn btn-outline-info" for="Others-1">Shell Script</label>
+        </div>
+        <div class=" bg-primary" id="APP_item_data" style="height: 600px;">
 
+        </div>
     </div>
 
 </body>
@@ -54,6 +89,30 @@
 <script src="js/my_common.js"></script>
 
 <script>
+
+    function change_portfolio(index) {
+
+        switch (index) {
+            case 0:
+                $('#APP_items').fadeIn('slow');
+                $('#WEB_items').hide();
+                $('#Others_items').hide();
+
+                break;
+            case 1:
+                $('#APP_items').hide();
+                $('#WEB_items').fadeIn('slow');
+                $('#Others_items').hide();
+
+                break;
+            case 2:
+                $('#APP_items').hide();
+                $('#WEB_items').hide();
+                $('#Others_items').fadeIn('slow');
+                break;
+        }
+    }
+
     var filename = location.pathname.substr(location.pathname.lastIndexOf("/") + 1).split(".")[0];
     console.log("filename is " + filename);
 
@@ -62,6 +121,10 @@
         $('#header_bar').hide();
         $('#information').hide();
         // $('#work_carousel').hide();
+
+        $('#APP_items').hide();
+        $('#WEB_items').hide();
+        $('#Others_items').hide();
 
         $.ajax({
             type: 'get',
@@ -80,6 +143,7 @@
                 $('#header_bar').fadeIn('slow');
                 $('#information').fadeIn('slow');
                 // $('#work_carousel').fadeIn('slow');
+                $('#APP_items').fadeIn('slow');
             },
             error: function (res) {
                 console.log('ERROR');
