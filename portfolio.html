@@ -22,40 +22,10 @@
     <div class="container col-8" id="information">
     </div>
 
-    <div class="container col-8 mb-2" id="portfolio_menu">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#" onclick="change_portfolio(0);">APP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="change_portfolio(1);">WEB</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" onclick="change_portfolio(2);">Others</a>
-            </li>
-        </ul>
+    <div class="container col-8" id="portfolio_menu">
     </div>
 
-    <div class="container col-8 mb-2" id="APP_items">
-        <div id="APP_items_list" class="mb-2">
-            <input type="radio" class="btn-check" name="APP-options" id="APP-1" autocomplete="off" checked>
-            <label class="btn btn-outline-info" for="APP-1">YLE Starters / Movers</label>
-
-            <input type="radio" class="btn-check" name="APP-options" id="APP-2" autocomplete="off">
-            <label class="btn btn-outline-info" for="APP-2">Quick 9x9</label>
-
-            <input type="radio" class="btn-check" name="APP-options" id="APP-3" autocomplete="off">
-            <label class="btn btn-outline-info" for="APP-3">Ocarina Conductor</label>
-
-            <input type="radio" class="btn-check" name="APP-options" id="APP-4" autocomplete="off">
-            <label class="btn btn-outline-info" for="APP-4">BLE GATT Browser</label>
-        </div>
-        <div class=" bg-primary" id="APP_item_data" style="height: 600px;">
-
-        </div>
-    </div>
-
-    <div class="container col-8 mb-2" id="WEB_items">
+    <div class="container col-8 mb-2" id="WEB_items" style="display:none;">
         <div id="WEB_items_list" class="mb-2">
             <input type="radio" class="btn-check" name="WEB-options" id="WEB-1" autocomplete="off" checked>
             <label class="btn btn-outline-info" for="WEB-1">Web 1</label>
@@ -72,7 +42,7 @@
         </div>
     </div>
 
-    <div class="container col-8 mb-2" id="Others_items">
+    <div class="container col-8 mb-2" id="Others_items" style="display:none;">
         <div id="Others_items_list" class="mb-2">
             <input type="radio" class="btn-check" name="Others-options" id="Others-1" autocomplete="off" checked>
             <label class="btn btn-outline-info" for="Others-1">Shell Script</label>
@@ -87,31 +57,32 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
 <script src="js/my_common.js"></script>
+<script src="js/my_portfolio.js"></script>
 
 <script>
 
-    function change_portfolio(index) {
+    // function change_portfolio(index) {
 
-        switch (index) {
-            case 0:
-                $('#APP_items').fadeIn('slow');
-                $('#WEB_items').hide();
-                $('#Others_items').hide();
+    //     switch (index) {
+    //         case 0:
+    //             $('#APP_items').fadeIn('slow');
+    //             $('#WEB_items').hide();
+    //             $('#Others_items').hide();
 
-                break;
-            case 1:
-                $('#APP_items').hide();
-                $('#WEB_items').fadeIn('slow');
-                $('#Others_items').hide();
+    //             break;
+    //         case 1:
+    //             $('#APP_items').hide();
+    //             $('#WEB_items').fadeIn('slow');
+    //             $('#Others_items').hide();
 
-                break;
-            case 2:
-                $('#APP_items').hide();
-                $('#WEB_items').hide();
-                $('#Others_items').fadeIn('slow');
-                break;
-        }
-    }
+    //             break;
+    //         case 2:
+    //             $('#APP_items').hide();
+    //             $('#WEB_items').hide();
+    //             $('#Others_items').fadeIn('slow');
+    //             break;
+    //     }
+    // }
 
     var filename = location.pathname.substr(location.pathname.lastIndexOf("/") + 1).split(".")[0];
     console.log("filename is " + filename);
@@ -120,9 +91,8 @@
 
         $('#header_bar').hide();
         $('#information').hide();
-        // $('#work_carousel').hide();
-
-        $('#APP_items').hide();
+        $('#portfolio_menu').hide();
+        // $('#APP_items').hide();
         $('#WEB_items').hide();
         $('#Others_items').hide();
 
@@ -137,13 +107,13 @@
                 var current_info = info_area.mount("#information");
                 current_info.$data.info_area = res.info_area;
 
-                // var work_carousel = show_carousel.mount("#work_carousel");
-                // work_carousel.$data.carousel_data = res.carousel_data;
+                var portfolio_menu = portfolio_area.mount("#portfolio_menu");
+                portfolio_menu.$data.portfolio = res.portfolio;
 
                 $('#header_bar').fadeIn('slow');
                 $('#information').fadeIn('slow');
-                // $('#work_carousel').fadeIn('slow');
-                $('#APP_items').fadeIn('slow');
+                $('#portfolio_menu').fadeIn('slow');
+                // $('#APP_items').fadeIn('slow');
             },
             error: function (res) {
                 console.log('ERROR');

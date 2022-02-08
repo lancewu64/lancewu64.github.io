@@ -2,5 +2,43 @@
     "info_area": {
         "msg": "My Portfolio",
         "description": ""
-    }
+    },
+    "portfolio": [
+        {
+            "name": "APP",
+            "items": [
+                {
+                    "name": "YLE Starters / Movers"
+                },
+                {
+                    "name": "Quick 9x9"
+                },
+                {
+                    "name": "Ocarina Conductor"
+                },
+                {
+                    "name": "BLE GATT Browser"
+                }
+            ]
+        },
+        {
+            "name": "WEB",
+            "items": [
+                {
+                    "name": "Xmas 2021"
+                }
+            ]
+        },
+        {
+            "name": "shell scripts",
+            "items": [
+                {
+                    "name": "RTOS MAP viewer"
+                }
+            ]
+        },
+        {
+            "name": "Others"
+        }
+    ]
 }
