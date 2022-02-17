@@ -16,14 +16,14 @@
     </style>
 </head>
 
-<body class="bg-dark bg-gradient">
+<body class="bg-dark">
     <div class="container" id="header_bar">
     </div>
 
     <div class="container col-8" id="information">
     </div>
 
-    <div class="container  col-8" id="work_timeline">
+    <div class="container  col-8" id="work_timeline" style="display: none;">
         <div class="VivaTimeline">
             <dl>
                 <dt>Jan 2016</dt>
@@ -178,7 +178,7 @@
 
                 $('#header_bar').fadeIn('slow');
                 $('#information').fadeIn('slow');
-                $('#work_timeline').fadeIn('slow');
+                // $('#work_timeline').fadeIn('slow');
             },
             error: function (res) {
                 console.log('ERROR');
@@ -187,7 +187,7 @@
     });
 
 
-    $('.VivaTimeline').vivaTimeline();
+    // $('.VivaTimeline').vivaTimeline();
 </script>
 
 </html>

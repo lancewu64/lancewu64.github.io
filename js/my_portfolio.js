@@ -6,12 +6,15 @@ const portfolio_area = Vue.createApp({
             </li>
         </ul>
         <div class="mt-2 mb-2 d-flex flex-wrap">
-            <div v-for="(item,key) in get_items(portfolio_key)" class="m-1">
+            <div v-for="(item,key) in get_items(portfolio_key)" class="m-1 btn btn-outline-info" style="height: 50px;">
+                <img :src="item.icon" v-if="item.icon != null" class="me-2" />
                 <input type="radio" class="btn-check" name="APP-options" :id="key" autocomplete="off" :checked="key==item_key" v-on:click="change_item(key)">
-                <label class="btn btn-outline-info" :for="key">{{item.name}}</label>
+                <label :for="key">{{item.name}}</label>
             </div>
         </div>
-        <div class=" bg-primary" id="APP_item_data" style="height: 600px;">
+        <div class="m-1 bg-secondary row" id="APP_item_data" style="height: 500px;">
+            <div class="col border">Picture here</div>
+            <div class="col border">Information here</div>
         </div>
         `,
     data() {

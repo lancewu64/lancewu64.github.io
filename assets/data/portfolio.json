@@ -8,13 +8,16 @@
             "name": "APP",
             "items": [
                 {
-                    "name": "YLE Starters / Movers"
+                    "name": "YLE Starters / Movers",
+                    "icon": "assets/images/app/YLE_Starters/yle_icon.png"
                 },
                 {
-                    "name": "Quick 9x9"
+                    "name": "Quick 9x9",
+                    "icon": "assets/images/app/Quick99/quick99_icon.png"
                 },
                 {
-                    "name": "Ocarina Conductor"
+                    "name": "Ocarina Conductor",
+                    "icon": "assets/images/app/Ocarina_Conductor/oc_icon.png"
                 },
                 {
                     "name": "BLE GATT Browser"

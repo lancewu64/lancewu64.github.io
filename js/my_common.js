@@ -2,7 +2,7 @@
 const show_header = Vue.createApp({
     template:
         `<div class="container">
-            <header class="d-flex flex-wrap justify-content-center py-3 mb-4 ">
+            <header class="d-flex flex-wrap justify-content-center py-3 mb-3 ">
                 <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
                     <span class="fs-4"><button style="background-color:transparent; border: none;"><span class="text-light">LW</span></button></span>
                 </a>

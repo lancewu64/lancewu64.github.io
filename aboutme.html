@@ -14,7 +14,7 @@
     </style>
 </head>
 
-<body class="bg-dark bg-gradient">
+<body class="bg-dark">
     <div class="container" id="header_bar">
     </div>
 
@@ -48,13 +48,13 @@
         </div>
     </div> -->
 
-    <div class="container col-8 mb-4" id="aboutme_menu">
+    <div class="container col-8 mb-4" id="aboutme_menu" style="display: none;">
         <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').fadeIn('slow');">ALL</button>
         <button onclick="$('#skill_data').fadeIn('slow'); $('#knowledge_data').hide();">Skills</button>
         <button onclick="$('#skill_data').hide(); $('#knowledge_data').fadeIn('slow');">Knowledge</button>
     </div>
 
-    <div class="container col-8" id="skill_data">
+    <div class="container col-8" id="skill_data" style="display: none;">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Skills</a>
@@ -73,7 +73,7 @@
         </table>
     </div>
 
-    <div class="container col-8" id="knowledge_data">
+    <div class="container col-8" id="knowledge_data" style="display: none;">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="#">Knowledge</a>
@@ -134,9 +134,9 @@
 
                 $('#header_bar').fadeIn('slow');
                 $('#information').fadeIn('slow');
-                $('#aboutme_menu').fadeIn('slow');
-                $('#skill_data').fadeIn('slow');
-                $('#knowledge_data').fadeIn('slow');
+                // $('#aboutme_menu').fadeIn('slow');
+                // $('#skill_data').fadeIn('slow');
+                // $('#knowledge_data').fadeIn('slow');
             },
             error: function (res) {
                 console.log('ERROR');
